@@ -80,6 +80,27 @@ Node.js + Express Backend
 ↓ SQL Queries
 PostgreSQL Database
 
+## REST API
+
+The CivicPulse LK backend is built with Node.js and Express and connects to PostgreSQL.
+
+### Issue Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/issues` | Get all issues |
+| GET | `/api/issues/:id` | Get a specific issue |
+| POST | `/api/issues` | Create a new issue |
+| PUT | `/api/issues/:id` | Update an issue |
+| DELETE | `/api/issues/:id` | Delete an issue |
+
+### Backend Structure
+
+- Routes handle incoming API endpoints.
+- Controllers contain request-handling logic.
+- PostgreSQL stores application data.
+- Parameterized SQL queries are used when working with dynamic values.
+
 ## Project Status
 
 Currently under development.
