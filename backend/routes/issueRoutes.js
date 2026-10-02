@@ -1,4 +1,10 @@
 const express = require("express");
+const router = express.Router();
+
+const {
+    authenticateToken,
+    authorizeRoles
+} = require("../middleware/authMiddleware");
 
 const {
   getAllIssues,
@@ -8,12 +14,12 @@ const {
   deleteIssue,
 } = require("../controllers/issueController");
 
-const router = express.Router();
+router.use(authenticateToken);
 
 router.get("/", getAllIssues);
 router.get("/:id", getIssueById);
-router.post("/", createIssue);
-router.put("/:id", updateIssue);
-router.delete("/:id", deleteIssue);
+router.post("/", authorizeRoles("citizen", "admin"), createIssue);
+router.put("/:id", authorizeRoles("field_officer", "admin"), updateIssue);
+router.delete("/:id", authorizeRoles("admin"), deleteIssue);
 
 module.exports = router;
