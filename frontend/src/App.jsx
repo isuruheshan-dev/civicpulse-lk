@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Issues from "./pages/Issues";
 import IssueDetails from "./pages/IssueDetails";
+import ReportIssue from "./pages/ReportIssue";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/issues" element={<ProtectedRoute><Issues /></ProtectedRoute>} />
         <Route path="/issues/:id" element={<ProtectedRoute><IssueDetails /></ProtectedRoute>} />
+        <Route path="/report-issue" element={<ProtectedRoute><ReportIssue /></ProtectedRoute>} />
       </Routes>
     </>
   );

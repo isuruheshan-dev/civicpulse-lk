@@ -5,6 +5,8 @@ require("dotenv").config();
 const pool = require("./db");
 const issueRoutes = require("./routes/issueRoutes");
 const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const officerRoutes = require("./routes/officerRoutes");
 
 const app = express();
 
@@ -13,6 +15,8 @@ app.use(express.json());
 
 app.use("/api/issues", issueRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/officer", officerRoutes);
 
 const PORT = 5000;
 

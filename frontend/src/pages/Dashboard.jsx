@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
+import AdminDashboard from "./AdminDashboard";
+import OfficerDashboard from "./OfficerDashboard";
 
 function Dashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user?.role === "admin") {
+  return <AdminDashboard />;
+}
+
+  if (user?.role === "field_officer") {
+    return <OfficerDashboard />;
+  }
 
   return (
     <div className="dashboard-page">
@@ -22,14 +32,19 @@ function Dashboard() {
       <div className="dashboard-cards">
         <Link to="/issues" className="dashboard-card">
           <h2>View Issues</h2>
-          <p>See reported community issues and their current status.</p>
+          <p>
+            See reported community issues and their current status.
+          </p>
+          <span>View Issues →</span>
         </Link>
 
-        <div className="dashboard-card">
+        <Link to="/report-issue" className="dashboard-card">
           <h2>Report Issue</h2>
-          <p>Submit a new local issue to CivicPulse.</p>
-          <span>Coming on Day 6 →</span>
-        </div>
+          <p>
+            Submit a new local issue to CivicPulse.
+          </p>
+          <span>Report Issue →</span>
+        </Link>
 
         <div className="dashboard-card">
           <h2>My Account</h2>
